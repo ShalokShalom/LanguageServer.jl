@@ -27,7 +27,7 @@ function get_hover(x::EXPR, documentation::String, server)
     return documentation
 end
 
-function get_tooltip(b::StaticLint.Binding, documentation::String, server; show_definition = false)
+function get_tooltip(b::StaticLint.Binding, documentation::String, server; show_definition=false)
     if b.val isa StaticLint.Binding
         documentation = get_hover(b.val, documentation, server)
     elseif b.val isa EXPR
@@ -75,7 +75,7 @@ function get_tooltip(b::StaticLint.Binding, documentation::String, server; show_
     return documentation
 end
 
-get_hover(b::StaticLint.Binding, documentation::String, server) = get_tooltip(b, documentation, server; show_definition = true)
+get_hover(b::StaticLint.Binding, documentation::String, server) = get_tooltip(b, documentation, server; show_definition=true)
 
 get_typed_definition(b) = _completion_type(b)
 get_typed_definition(b::StaticLint.Binding) =
@@ -194,7 +194,7 @@ function get_preceding_docs(expr::EXPR, documentation)
     end
 end
 
-ensure_ends_with(s, c = "\n") = endswith(s, c) ? s : string(s, c)
+ensure_ends_with(s, c="\n") = endswith(s, c) ? s : string(s, c)
 
 binding_has_preceding_docs(b::StaticLint.Binding) = expr_has_preceding_docs(b.val)
 
